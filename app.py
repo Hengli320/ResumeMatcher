@@ -1,3 +1,4 @@
+from dotenv import load_dotenv; load_dotenv()
 from flask import Flask, request, jsonify, render_template
 from flask_restful import Api, Resource
 import fitz 
@@ -80,4 +81,5 @@ def extract_keywords(text):
 api.add_resource(UploadResume, '/upload_resume')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
+

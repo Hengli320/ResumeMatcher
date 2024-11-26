@@ -1,3 +1,4 @@
+boto3
 flask
 flask_restful
 pymupdf
@@ -5,3 +6,5 @@ spacy
 psycopg2-binary
 openai
 scikit-learn
+python-dotenv
+boto3
