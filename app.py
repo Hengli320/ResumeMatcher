@@ -1,5 +1,8 @@
+#from dotenv import load_dotenv; load_dotenv()
 from flask import Flask, request, jsonify, render_template
 from flask_restful import Api, Resource
+from flask_cors import CORS
+
 import fitz 
 from database import get_job_requirements
 from ai_generator import generate_fit_paragraph
@@ -7,6 +10,8 @@ import os
 from openai import OpenAI
 
 app = Flask(__name__)
+CORS(app)
+
 api = Api(app)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 system_content = ( "Please extract skills from the user resume, skills include programming languages like 'python', 'C++', etc"
@@ -80,4 +85,4 @@ def extract_keywords(text):
 api.add_resource(UploadResume, '/upload_resume')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
